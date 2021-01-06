@@ -20,53 +20,59 @@ Wallpaper( {@required this.name});
 
 class _WallpaperState extends State<Wallpaper> {
   //key = fObCQEHZ7xaKFpv1rgXDCma1xoiICo3D1x2ZnR73bqI
+  List data=null;
   @override
   Widget build(BuildContext context,) {
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight) / 2;
+    final double itemWidth = (size.width / 2);
     fetchImage(widget.name);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.name),
           centerTitle: true,
         ),
-        body:GridView.builder(
-          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          itemBuilder: (BuildContext context, int index) {
-            return new Card(
-              child: new GridTile(
-                footer: new Text(data[index]['name']),
-                child: new Text(data[index]['image']), //just for testing, will fill with image later
-              ),
+        body: data==null? Center(
+                child: Row( mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Loading ',style: TextStyle(fontSize: 40,color: Colors.blue),),
+                    CircularProgressIndicator(),
+                  ],
+                )
+              )
+            :
+        GridView.builder(
+          itemCount: data == null ? 0 : data.length,
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount( crossAxisCount: 3,
+              mainAxisSpacing: 1,
+              crossAxisSpacing: 1,
+              childAspectRatio: (itemWidth / itemHeight)
+                 ),
+          itemBuilder: ( context,  index) {
+            return Stack(
+              children: [
+                InkWell(
+                  onTap: (){
+                    showDialog(context: context,
+                        builder:(context) => _onTap(context,
+                            data[index]['links']['download'] ));
+                  },
+                  child:Container(
+                    height: 1500,
+                    width: 500,
+                    padding: EdgeInsets.all(2),
+                    child: Image.network(data[index]['urls']['small'],
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                  ,
+                ),
+              ],
             );
           },
         )
-         // ListView.builder(
-        //   itemCount: data == null ? 0 : data.length,
-        //   itemBuilder: (context,index){
-        //     return Stack(
-        //       children: [
-        //         InkWell(
-        //           onTap: (){
-        //             showDialog(context: context,
-        //                 builder:(context) => _onTap(context,
-        //                     data[index]['links']['download'] ));
-        //           },
-        //           child:Padding(
-        //             padding: EdgeInsets.all(10),
-        //             child: Image.network(data[index]['urls']['small'],
-        //               fit: BoxFit.cover,
-        //               height: 300,
-        //               width: double.maxFinite,
-        //             ),
-        //           )
-        //           ,
-        //         ),
-        //       ],
-        //     );
-        //   },
-        // ),
     );
   }
-  List data;
   String _localfile;
   fetchImage(String type) async{
       var fetchdata = await http.get('https://api.unsplash.com/search/photos?'
