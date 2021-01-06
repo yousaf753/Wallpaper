@@ -4,7 +4,7 @@ A new Flutter application.
 
 ## Getting Started
 
-https://user-images.githubusercontent.com/72139490/103799525-04602800-506d-11eb-8abd-59ed4f8ae6b9.mp4
+https://user-images.githubusercontent.com/72139490/103799525-04602800-506d-11eb-8abd-59ed4f8ae6b9.gif
 ![Screenshot_20210106-214539_One UI Home](https://user-images.githubusercontent.com/72139490/103799652-2eb1e580-506d-11eb-8164-f5327d60f880.jpg)
 ![Screenshot_20210106-214526_One UI Home](https://user-images.githubusercontent.com/72139490/103799766-5903a300-506d-11eb-9328-d2fe2cf6155d.jpg)
 ![Screenshot_20210106-214515](https://user-images.githubusercontent.com/72139490/103799863-7cc6e900-506d-11eb-83fa-5b99f34ef10d.jpg)
