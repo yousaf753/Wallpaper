@@ -35,11 +35,11 @@ class _WallpaperState extends State<Wallpaper> {
                     SizedBox(
                       child:CircularProgressIndicator(
                         backgroundColor: Colors.black,
-                        strokeWidth: 20,
+                        strokeWidth: 10,
                         valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
                       ),
-                      height: 100.0,
-                      width: 100.0,
+                      height: 50.0,
+                      width: 50.0,
                     ),
                   ],
                 )
@@ -61,9 +61,6 @@ class _WallpaperState extends State<Wallpaper> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => wallpaper.setwallpaper( values:  data[index]['links']['download'], image:data[index]['urls']['small'] ,)));
-                    // showDialog(context: context,
-                    //     builder:(context) => _onTap(context,
-                    //         data[index]['links']['download'] ));
                   },
                   child:Container(
                     height: 1500,
