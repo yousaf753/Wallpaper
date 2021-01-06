@@ -8,12 +8,9 @@ class Assets {
   static const String imageBuilding = 'image/building.jpg';
   static const String imageCar = 'image/car.jpg';
   static const String imageCity = 'image/city.jpg';
-  static const String imageCricket = 'image/cricket.jpg';
-  static const String imageFootbal = 'image/footbal.jpg';
-  static const String imageFootball = 'image/football.jpg';
-  static const String imageHockey = 'image/hockey.jpg';
   static const String imageMinimalist = 'image/minimalist.jpg';
   static const String imageNature = 'image/nature.jpg';
   static const String imageSpace = 'image/space.jpg';
+  static const String imageSports = 'image/sports.jpg';
 
 }

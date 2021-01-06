@@ -25,34 +25,45 @@ class _WallpaperState extends State<Wallpaper> {
     fetchImage(widget.name);
     return Scaffold(
         appBar: AppBar(
-          title: Text('Wallpaper App'),
+          title: Text(widget.name),
           centerTitle: true,
         ),
-        body: ListView.builder(
-          itemCount: data == null ? 0 : data.length,
-          itemBuilder: (context,index){
-            return Stack(
-              children: [
-                InkWell(
-                  onTap: (){
-                    showDialog(context: context,
-                        builder:(context) => _onTap(context,
-                            data[index]['links']['download'] ));
-                  },
-                  child:Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Image.network(data[index]['urls']['small'],
-                      fit: BoxFit.cover,
-                      height: 300,
-                      width: double.maxFinite,
-                    ),
-                  )
-                  ,
-                ),
-              ],
+        body:GridView.builder(
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          itemBuilder: (BuildContext context, int index) {
+            return new Card(
+              child: new GridTile(
+                footer: new Text(data[index]['name']),
+                child: new Text(data[index]['image']), //just for testing, will fill with image later
+              ),
             );
           },
-        ),
+        )
+         // ListView.builder(
+        //   itemCount: data == null ? 0 : data.length,
+        //   itemBuilder: (context,index){
+        //     return Stack(
+        //       children: [
+        //         InkWell(
+        //           onTap: (){
+        //             showDialog(context: context,
+        //                 builder:(context) => _onTap(context,
+        //                     data[index]['links']['download'] ));
+        //           },
+        //           child:Padding(
+        //             padding: EdgeInsets.all(10),
+        //             child: Image.network(data[index]['urls']['small'],
+        //               fit: BoxFit.cover,
+        //               height: 300,
+        //               width: double.maxFinite,
+        //             ),
+        //           )
+        //           ,
+        //         ),
+        //       ],
+        //     );
+        //   },
+        // ),
     );
   }
   List data;

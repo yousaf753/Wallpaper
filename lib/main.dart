@@ -1,6 +1,5 @@
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
-import 'package:wallpaper/category.dart';
 import 'categorylist.dart';
 void main() {
   runApp(MyApp());

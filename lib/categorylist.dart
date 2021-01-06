@@ -5,13 +5,53 @@ class CategoryList extends StatefulWidget {
   @override
   _CategoryListState createState() => _CategoryListState();
 }
-
 class _CategoryListState extends State<CategoryList> {
+  bool issearching=false;
+  TextEditingController searchController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          appBar: AppBar(
+            title: !issearching ? Text( 'Search More') :
+           TextField(
+             style: TextStyle(color: Colors.white),
+             decoration: InputDecoration(
+                 hintText: "Search Wallpaper Here" ,
+                     hintStyle: TextStyle(color: Colors.white),
+             ),
+             keyboardType: TextInputType.text,
+             textInputAction: TextInputAction.search,
+             autofocus: true,
+             focusNode: _focusNode,
+             controller: searchController,
+
+           ),
+              centerTitle: true,
+              actions: <Widget>[
+                        issearching ?
+                IconButton(icon: Icon(Icons.check),
+                    onPressed: (){
+                   setState(() {
+                    this.issearching =false;
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => wallpaper.Wallpaper( name:searchController.text ,)));
+                   });
+                    })
+                            :  IconButton(icon: Icon(Icons.search),
+                            onPressed: ()
+                        {
+                          setState(() {
+                                this.issearching =true;
+                          });
+                        })
+
+              ],
+          ),
         body: ListView.builder(
             itemCount: categoryList.length,
             itemBuilder: (context, index) {
