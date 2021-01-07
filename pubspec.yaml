@@ -35,6 +35,7 @@ dependencies:
   wallpaperplugin: ^0.1.1
   http: ^0.12.2
   easy_permission_validator: ^2.0.1
+  animated_splash_screen: ^1.0.1+2
 
 dev_dependencies:
   flutter_test:

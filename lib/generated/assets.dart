@@ -11,6 +11,7 @@ class Assets {
   static const String imageMinimalist = 'image/minimalist.jpg';
   static const String imageNature = 'image/nature.jpg';
   static const String imageSpace = 'image/space.jpg';
+  static const String imageSplash = 'image/splash.jpg';
   static const String imageSports = 'image/sports.jpg';
 
 }
