@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/services.dart';
 import 'package:wallpaperplugin/wallpaperplugin.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
@@ -31,39 +31,30 @@ class _setwallpaperState extends State<setwallpaper> {
             child: Image.network(widget.image,
               fit: BoxFit.fill,),
           ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: InkWell(
-            onTap: () async {
-              download() ;
-            },
-           child: Container(
-             margin: EdgeInsets.only(bottom: 50),
-             child:
-                 persentage =="0%"?
-             Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 Icon(
-                   Icons.check,
-                   color: Colors.white,
-                   size: 60,
-                   semanticLabel: 'Text to announce in accessibility modes',
-                 ),
-                 Text('Set Wallpaper',style: TextStyle(fontSize: 25,fontStyle: FontStyle.italic),)
-               ],
-             )
-                     :
-                 Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('Downloading  ',style: TextStyle(fontSize: 25,fontStyle: FontStyle.italic),),
-                               Text('$persentage',style: TextStyle(fontSize: 30,fontStyle: FontStyle.italic),)
-    ],
-           ),
-          ),
-        ),
-        )
+            Align(
+              alignment: Alignment.center,
+              child: persentage !="0%"?
+                  Text('Downloading  $persentage',style: TextStyle(fontSize: 40,fontStyle: FontStyle.italic),):
+                  Container(),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child:Container(
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  shape: BoxShape.circle,
+
+                ),
+                padding: EdgeInsets.all(10),
+                height: 90,
+                width: 90,
+                margin: EdgeInsets.only(right: 30,bottom: 50),
+                child: IconButton(icon: Icon(Icons.check,size: 50,color: Colors.white70,),
+                    onPressed: (){
+                      download();
+                    }),
+              ),
+            ),
         ],
 
       ),

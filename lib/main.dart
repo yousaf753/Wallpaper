@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:AnimatedSplashScreen(
-          duration: 3000,
+          duration: 1000,
           splash:Container(
             height: double.infinity,
              width:double.infinity,
