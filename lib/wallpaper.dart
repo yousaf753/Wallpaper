@@ -78,9 +78,9 @@ class _WallpaperState extends State<Wallpaper> {
         )
     );
   }
-  fetchImage(String type) async{
+  fetchImage(String name) async{
       var fetchdata = await http.get('https://api.unsplash.com/search/photos?'
-        'per_page=30&client_id=fObCQEHZ7xaKFpv1rgXDCma1xoiICo3D1x2ZnR73bqI&query=$type'
+        'per_page=30&client_id=fObCQEHZ7xaKFpv1rgXDCma1xoiICo3D1x2ZnR73bqI&query=$name'
     );
     var jsondata = json.decode(fetchdata.body);
     setState(() {
@@ -89,4 +89,5 @@ class _WallpaperState extends State<Wallpaper> {
     return 'success';
   }
 }
+
 

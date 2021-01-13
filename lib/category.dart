@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-
 class Category {
   String name;
   AssetImage image;
-
   Category({
     @required this.name,
     @required this.image,
   });
 }
-
 List<Category> categoryList = [
   Category(
     image: AssetImage("image/abstract.jpg"),
